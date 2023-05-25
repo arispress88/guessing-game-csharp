@@ -2,7 +2,8 @@
 
 void Main()
 {
-    int secretNumber = 42;
+    Random random = new Random();
+    int secretNumber = random.Next(1, 101); //Generates a random number between 1-100 to be the secret number
     int maxAttempts = 4;
 
     Console.WriteLine("Welcome to the Guessing Game!");
@@ -10,7 +11,9 @@ void Main()
 
     for (int attempt = 1; attempt <= maxAttempts; attempt++)
     {
+        int attemptsLeft = maxAttempts - attempt + 1;
         Console.WriteLine("Attempt #{0}", attempt);
+        Console.WriteLine("You have {0} guess(es) left.", attemptsLeft);
         Console.Write("Take a guess: ");
         string input = Console.ReadLine();
     
@@ -25,9 +28,18 @@ void Main()
             Console.WriteLine("Congrats! You guessed the correct number!");
             return; //Leaves the program after the correct guess  
         }
-        else if (attempt != maxAttempts)
+        else if (guess < secretNumber)
         {
-            Console.WriteLine("Sorry, that's not the right number.");
+            Console.WriteLine("Sorry, your guess is too low.");
+        }
+        else if (guess > secretNumber)
+        {
+            Console.WriteLine("Sorry, your guess is too high.");
+        }
+
+        if (attempt != maxAttempts)
+        {
+            Console.WriteLine("Try again.");
         }
     }
     else
