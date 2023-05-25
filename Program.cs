@@ -19,7 +19,7 @@ void Main()
     int selectedDifficulty;
     while (!int.TryParse(Console.ReadLine(), out selectedDifficulty) || selectedDifficulty < 1 || selectedDifficulty > 4)
     {
-        Console.WriteLine("Invalid input. Please enter a number between 1 and 3 to select the difficulty level.");
+        Console.WriteLine("Invalid input. Please enter a number between 1 and 4 to select the difficulty level.");
     }
 
     switch (selectedDifficulty)
